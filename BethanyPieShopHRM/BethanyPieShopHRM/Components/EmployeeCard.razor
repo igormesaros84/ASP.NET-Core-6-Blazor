@@ -6,5 +6,7 @@
         <div class="card-body employee-card text-center">
             <img src="@($"https://gillcleerenpluralsight.blob.core.windows.net/person/{Employee.EmployeeId}.jpg")" class="employee-img" />
         </div>
+        <button class="btn btn-primary btn-sm mb-1"
+            @onclick="@(async () => await EmployeeQuickViewClicked.InvokeAsync(Employee))">Quick View</button>
     </div>
 </div>

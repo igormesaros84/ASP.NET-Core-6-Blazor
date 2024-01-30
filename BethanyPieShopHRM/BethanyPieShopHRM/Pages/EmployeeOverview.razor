@@ -9,11 +9,12 @@
 }
 else
 {
+    <QuickViewPopup Employee="_selectedEmployee"></QuickViewPopup>
     <div class="row">
         @foreach (var employee in Employees)
         {
             <div class="col-12 col-sm-12 col-md-12 col-md-6 col-lg-4 col-xl-3">
-                <EmployeeCard Employee="employee"></EmployeeCard>
+                <EmployeeCard Employee="employee" EmployeeQuickViewClicked="ShowQuickViewPopup"></EmployeeCard>
             </div>
         }
     </div>
