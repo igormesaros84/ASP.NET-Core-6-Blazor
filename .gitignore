@@ -6,3 +6,11 @@ obj/
 .vs/
 
 asp-dot-net-core-6-blazor-fundamentals/
+
+BethanyPieShopHRM/BethanysPieShopHRM.Api/Migrations/
+
+BethanyPieShopHRM/BethanysPieShopHRM.Api/Properties/serviceDependencies.json
+
+BethanyPieShopHRM/BethanysPieShopHRM.Api/Properties/serviceDependencies.local.json
+
+BethanyPieShopHRM/BethanysPieShopHRM.Api/Properties/serviceDependencies.local.json.user
