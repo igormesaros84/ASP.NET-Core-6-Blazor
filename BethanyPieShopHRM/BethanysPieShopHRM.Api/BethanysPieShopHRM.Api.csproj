@@ -7,6 +7,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.26" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.20" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.20">
 			<PrivateAssets>all</PrivateAssets>
@@ -16,6 +17,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\BethanyPieShopHRM\BethanyPieShopHRM.csproj" />
 		<ProjectReference Include="..\BethanysPieShopHRM.Shared\BethanysPieShopHRM.Shared.csproj" />
 	</ItemGroup>
 
