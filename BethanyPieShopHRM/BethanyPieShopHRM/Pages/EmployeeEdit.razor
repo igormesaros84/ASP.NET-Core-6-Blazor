@@ -57,5 +57,17 @@
                 <InputText id="city" class="form-control col-md-8" @bind-Value="@Employee.City" placeholder="Enter city"></InputText>
             </div>
         </div>
+
+        <div class="row mb-3">
+            <label for="city" class="col-form-label col-md-3">Country: </label>
+            <div class="col-md-8">
+                <InputSelect id="country" class="form-select col-md-8" @bind-Value="@Employee.CountryId">
+                    @foreach (var country in Countries)
+                    {
+                        <option value="@country.CountryId">@country.Name</option>
+                    }
+                </InputSelect>
+            </div>
+        </div>
     </EditForm>
 </section>
