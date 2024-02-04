@@ -27,6 +27,14 @@ public partial class EmployeeEdit
     {
         JobCategories = (await JobCategoryDataService.GetJobCategoriesAsync()).ToList();
         Countries = (await CountryService.GetAllCountriesAsync()).ToList();
-        Employee = await EmployeeDataService.GetEmployeeDetailsAsync(int.Parse(EmployeeId));
+
+        if (int.TryParse(EmployeeId, out var employeeId))
+        {
+            Employee = await EmployeeDataService.GetEmployeeDetailsAsync(employeeId);
+        }
+        else
+        {
+            Employee = new Employee {CountryId = 1, JobCategoryId = 1, BirthDate = DateTime.Now, JoinedDate = DateTime.Now};
+        }
     }
 }
