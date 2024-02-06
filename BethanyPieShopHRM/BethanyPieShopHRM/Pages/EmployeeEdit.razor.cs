@@ -1,6 +1,7 @@
 ﻿using BethanyPieShopHRM.Services;
 using BethanysPieShopHRM.Shared.Domain;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
 
 namespace BethanyPieShopHRM.Pages;
 
@@ -52,6 +53,19 @@ public partial class EmployeeEdit
 
         if (Employee.EmployeeId == 0) //new
         {
+            //image adding
+            if (selectedFile != null)
+            {
+                var file = selectedFile;
+                Stream stream = file.OpenReadStream();
+                MemoryStream ms = new();
+                await stream.CopyToAsync(ms);
+                stream.Close();
+
+                Employee.ImageName = file.Name;
+                Employee.ImageContent = ms.ToArray();
+            }
+
             var addedEmployee = await EmployeeDataService.AddEmployeeAsync(Employee);
             if (addedEmployee != null)
             {
@@ -94,6 +108,13 @@ public partial class EmployeeEdit
     protected void NavigateToOverview()
     {
         NavigationManager.NavigateTo("/employeeoverview");
+    }
+
+    private IBrowserFile selectedFile;
+    private void OnInputFileChanged(InputFileChangeEventArgs e)
+    {
+        selectedFile = e.File;
+        StateHasChanged();
     }
 
 }

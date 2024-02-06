@@ -4,7 +4,8 @@
             <h4>@Employee.FirstName @Employee.LastName</h4>
         </div>
         <div class="card-body employee-card text-center">
-            <img src="@($"https://gillcleerenpluralsight.blob.core.windows.net/person/{Employee.EmployeeId}.jpg")" class="employee-img" />
+            @* <img src="@($"https://gillcleerenpluralsight.blob.core.windows.net/person/{Employee.EmployeeId}.jpg")" class="employee-img" /> *@
+            <img src="@Employee.ImageName" class="employee-img rounded-circle img-fluid" />
         </div>
         <button class="btn btn-primary btn-sm mb-1"
             @onclick="@(async () => await EmployeeQuickViewClicked.InvokeAsync(Employee))">Quick View</button>
