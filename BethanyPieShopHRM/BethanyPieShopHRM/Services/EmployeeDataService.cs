@@ -1,6 +1,7 @@
 ﻿using BethanyPieShopHRM.Helper;
 using BethanysPieShopHRM.Shared.Domain;
 using Blazored.LocalStorage;
+using System.Text;
 using System.Text.Json;
 
 namespace BethanyPieShopHRM.Services;
@@ -16,14 +17,31 @@ public class EmployeeDataService : IEmployeeDataService
         _localStorageService = localStorageService;
     }
 
-    public Task<Employee> AddEmployeeAsync(Employee employee)
+    public async Task<Employee> AddEmployeeAsync(Employee employee)
     {
-        throw new NotImplementedException();
+        var employeeJson = 
+            new StringContent(JsonSerializer.Serialize(employee), Encoding.UTF8, "application/json");
+
+        var response = await _httpClient.PostAsync("api/employee", employeeJson);
+
+        if (response.IsSuccessStatusCode)
+        {
+            return await JsonSerializer.DeserializeAsync<Employee>(await response.Content.ReadAsStreamAsync());
+        }
+
+        return null;
     }
 
-    public Task DeleteEmployeeAsync(int employeeId)
+     public async Task UpdateEmployeeAsync(Employee employee)
     {
-        throw new NotImplementedException();
+        var employeeJson = new StringContent(JsonSerializer.Serialize(employee), encoding: Encoding.UTF8, "application/json");
+
+        await _httpClient.PutAsync("api/employee", employeeJson);
+    }
+
+    public async Task DeleteEmployeeAsync(int employeeId)
+    {
+        await _httpClient.DeleteAsync($"api/employee/{employeeId}");
     }
 
     public async Task<IEnumerable<Employee>> GetAllEmployeesAsync(bool refreshRequired = false)
@@ -63,10 +81,5 @@ public class EmployeeDataService : IEmployeeDataService
             {
                 PropertyNameCaseInsensitive = true
             });
-    }
-
-    public Task UpdateEmployeeAsync(Employee employee)
-    {
-        throw new NotImplementedException();
     }
 }
