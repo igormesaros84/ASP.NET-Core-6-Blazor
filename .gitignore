@@ -14,3 +14,7 @@ BethanyPieShopHRM/BethanysPieShopHRM.Api/Properties/serviceDependencies.json
 BethanyPieShopHRM/BethanysPieShopHRM.Api/Properties/serviceDependencies.local.json
 
 BethanyPieShopHRM/BethanysPieShopHRM.Api/Properties/serviceDependencies.local.json.user
+
+BethanyPieShopHRM/BethanyPieShopHRM/wwwroot/appsettings.Development.json
+
+BethanyPieShopHRM/BethanysPieShopHRM.Api/appsettings.Development.json
