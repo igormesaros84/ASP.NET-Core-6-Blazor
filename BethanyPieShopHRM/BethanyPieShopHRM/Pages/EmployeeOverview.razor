@@ -1,6 +1,7 @@
 ﻿@page "/employeeoverview"
 <PageTitle>@Title</PageTitle>
 <h2>Employee Overview</h2>
+@attribute [Authorize]
 
 <!-- This will only be null once we get the data asynchronously -->
 @if(Employees is null)
